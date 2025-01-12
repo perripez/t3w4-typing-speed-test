@@ -1,0 +1,47 @@
+body {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: lightcyan;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+.container {
+    text-align: center;
+    padding: 20px;
+}
+
+#sentenceDisplay {
+    color: lightseagreen;
+    padding: 20px;
+
+}
+.play-button {
+    background-color: cadetblue;
+    border: none;
+    padding: 10px;
+    color:lightcyan;
+    cursor: pointer;
+}
+
+.play-button:hover {
+    background-color: lightseagreen;
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.results {
+    color: lightseagreen;
+    padding: 20px;
+}
+ 
+.timer-display {
+    color: lightblue;
+    padding:10px;
+}
