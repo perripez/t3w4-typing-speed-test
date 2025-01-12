@@ -13,6 +13,7 @@ const sentenceDisplay = document.getElementById("sentenceDisplay");
 const inputField = document.getElementById("inputField");
 const resultsSection = document.getElementById("resultsSection");
 const timerDisplay = document.getElementById("timerDisplay");
+const restartButton = document.getElementById("restartButton");
 
 // Sentence Fetching
 async function getRandomSentence(wordCount){
@@ -39,6 +40,7 @@ async function displaySentence(){
 // Event listeners
 playButton.addEventListener('click', startGame);
 inputField.addEventListener('input', trackTyping);
+restartButton.addEventListener('click', restartGame);
 
 // Start game feature
 function startGame(){
@@ -54,6 +56,9 @@ function startGame(){
     inputField.style.display = 'block';
     sentenceDisplay.style.display = 'block';
     timerDisplay.style.display = 'block';
+    playButton.style.display = 'none';
+    restartButton.style.display = 'block';
+    restartButton.style.margin = 'auto';
 
 }
 
@@ -66,7 +71,7 @@ function startTimer(){
         } else {
             endGame();
         }
-    }, 1000);
+    }, 1000); // 1000 milliseconds = 1 second
 }
 
 // Typing and Tracking functions - WPM/Accuracy
@@ -142,4 +147,25 @@ function endGame() {
     // Display the result in the resultDiv
     resultsSection.innerHTML = `<p>Game over! Your Final WPM: ${wpm} | Accuracy: ${accuracy}%</p>`
 
+}
+
+// Restart Game
+
+function restartGame(){
+    startGame();
+    correctCharacters = 0;
+    totalCharacters = 0;
+    startTime = null;
+    timer = 10; // Reset the timer
+    clearInterval(timerInterval);
+
+    // Reset and enable input fields
+    inputField.value = '';
+    inputField.style.display = 'block';
+
+    // Display the new sentence and otehr UI elements
+    displaySentence();
+    resultsSection.innerHTML = '';
+    timerDisplay.textContent = `Time Left: ${timer}s`;
+    playButton.style.display = 'none';
 }
